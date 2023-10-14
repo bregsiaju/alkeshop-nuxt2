@@ -1,0 +1,24 @@
+{
+    "data": [
+        {
+            "title": "About Us",
+            "url": "/about-us"
+        },
+        {
+            "title": "News",
+            "url": "/news"
+        },
+        {
+            "title": "Products",
+            "url": "/products"
+        },
+        {
+            "title": "Services",
+            "url": "/services"
+        },
+        {
+            "title": "Contact Us",
+            "url": "/contact-us"
+        }
+    ]
+}
