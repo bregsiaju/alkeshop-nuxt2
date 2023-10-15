@@ -11,7 +11,7 @@
 						</nuxt-link>
 					</li>
 					<li>
-						<a href="#!"><i class="tf-ion-android-cart"></i></a>
+						<a @click="addToCart"><i class="tf-ion-android-cart"></i></a>
 					</li>
 				</ul>
 			</div>
@@ -28,13 +28,24 @@ export default {
 	name: 'ProductCard',
 	props: {
 		data: {
-			type: Array,
+			type: Object,
 			required: true
 		}
 	},
 	methods: {
 		formatRupiah(nom) {
 			return `Rp${this.$setCurrency(nom)}`
+		},
+		async addToCart() {
+			try {
+				const res = await this.$axios.post('/base/carts', {
+					productId: this.data.id,
+					quantity: 1
+				})
+				this.$emit('success-cart', res.data.message)
+			} catch (err) {
+				this.error = this.$getErrorMessage(err)
+			}
 		}
 	}
 }

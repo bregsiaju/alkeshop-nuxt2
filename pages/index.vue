@@ -12,6 +12,7 @@
 				</div>
 			</div>
 		</section>
+		<div class="text-center text-blue fw-medium">{{ cartMsg }}</div>
 		<section class="products section">
 			<div class="container">
 				<div class="row">
@@ -131,7 +132,7 @@
 								:key="product.id"
 								class="col-md-4"
 							>
-								<ProductCard :data="product" />
+								<ProductCard :data="product" @success-cart="getMessageCart" />
 							</div>
 						</div>
 					</div>
@@ -150,7 +151,8 @@ export default {
 	data() {
 		return {
 			error: null,
-			products: []
+			products: [],
+			cartMsg: ''
 		}
 	},
 	mounted() {
@@ -161,13 +163,23 @@ export default {
 			try {
 				const res = await this.$axios.get('/base/products')
 				this.products = res.data.data
-				console.log(res.data.data)
+				// console.log(res.data.data)
 			} catch (err) {
 				this.error = this.$getErrorMessage(err)
 			}
+		},
+		getMessageCart(msg) {
+			this.cartMsg = msg
+			setTimeout(() => {
+				this.cartMsg = ''
+			}, 3000)
 		}
 	}
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.section {
+	padding: 50px 0 80px 0;
+}
+</style>
