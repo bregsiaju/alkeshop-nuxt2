@@ -3,42 +3,42 @@
 	<section class="top-header">
 		<div class="container">
 			<div class="row d-flex align-items-center">
-				<div class="col-md-8 col-xs-12 col-sm-4">
+				<div class="col-md-4 col-xs-12 col-sm-4">
 					<!-- Site Logo -->
 					<div class="logo">
 						<span class="suntik">🩺</span>
 						<nuxt-link to="/">
 							<!-- replace logo here -->
-							<img src="/assets/img/AlkeShop.png" width="198px" class="logo" />
+							<img src="/assets/img/AlkeShop.png" width="158px" class="logo" />
 						</nuxt-link>
 					</div>
 				</div>
-				<div class="col-md-4 col-xs-12 col-sm-4">
+				<div class="col-md-8 col-xs-12 col-sm-4">
 					<!-- Cart -->
 					<ul v-if="isLoggedIn" class="top-menu text-right list-inline">
 						<li class="cart-nav dropdown-slide">
-							<nuxt-link to="/cart" class="dropdown-toggle"
-								><i class="tf-ion-android-cart"></i>Cart</nuxt-link
+							<nuxt-link to="/keranjang" class="dropdown-toggle"
+								><i class="tf-ion-android-cart"></i>Keranjang</nuxt-link
 							>
 						</li>
 						<!-- / Cart -->
 
 						<!-- Search -->
 						<li class="dropdown search dropdown-slide">
-							<div
+							<a
 								class="dropdown-toggle"
 								data-toggle="dropdown"
 								data-hover="dropdown"
 							>
-								<i class="tf-ion-ios-search-strong"></i> Search
-							</div>
+								<i class="tf-ion-ios-search-strong"></i> Cari
+							</a>
 							<ul class="dropdown-menu search-dropdown">
 								<li>
 									<form action="post">
 										<input
 											type="search"
 											class="form-control"
-											placeholder="Search..."
+											placeholder="Cari nama produk..."
 										/>
 									</form>
 								</li>
@@ -48,12 +48,10 @@
 
 						<!-- Profile -->
 						<li>
-							<div class="dropdown-toggle">
-								<nuxt-link to="/profil">
-									<i class="fa-regular fa-user"></i>
-									<span class="ms-2">Profil</span>
-								</nuxt-link>
-							</div>
+							<nuxt-link to="/profil">
+								<i class="fa-regular fa-user"></i>
+								<span class="ms-2">Profil</span>
+							</nuxt-link>
 						</li>
 						<!-- / Profile -->
 

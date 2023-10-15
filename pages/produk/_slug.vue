@@ -4,7 +4,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<ol class="breadcrumb">
-						<li><nuxt-link to="/">Home</nuxt-link></li>
+						<li><nuxt-link to="/">Beranda</nuxt-link></li>
 						<li>
 							<nuxt-link to="/">{{ product.Category.categoryName }}</nuxt-link>
 						</li>
@@ -12,7 +12,7 @@
 					</ol>
 				</div>
 			</div>
-			<div class="row mt-20">
+			<div class="row">
 				<div class="col-md-5">
 					<div class="single-product-slider">
 						<div
