@@ -33,27 +33,30 @@ export default {
 		],
 		script: [
 			{
-				src: '~/assets/plugins/dist/jquery.min.js',
+				src: 'https://kit.fontawesome.com/ecde83b210.js'
+			},
+			{
+				src: '/assets/plugins/jquery/dist/jquery.min.js',
 				body: true
 			},
 			{
-				src: '~/assets/plugins/bootstrap/js/bootstrap.min.js',
+				src: '/assets/plugins/bootstrap/js/bootstrap.min.js',
 				body: true
 			},
 			{
-				src: '~/assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js',
+				src: '/assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js',
 				body: true
 			},
 			{
-				src: '~/assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js',
+				src: '/assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js',
 				body: true
 			},
 			{
-				src: '~/assets/plugins/syo-timer/build/jquery.syotimer.min.js',
+				src: '/assets/plugins/syo-timer/build/jquery.syotimer.min.js',
 				body: true
 			},
 			{
-				src: '~/assets/js/script.js',
+				src: '/assets/js/script.js',
 				body: true
 			}
 		]
@@ -69,17 +72,17 @@ export default {
 
 	// Global CSS (https://go.nuxtjs.dev/config-css)
 	css: [
-		'~/assets/scss/main.scss',
 		'~/assets/plugins/themefisher-font/style.css',
 		'~/assets/plugins/bootstrap/css/bootstrap.min.css',
-		'~/assets/plugins/animate/animate.css'
+		'~/assets/plugins/animate/animate.css',
+		'~/assets/scss/main.scss'
 		// '~/assets/plugins/slick/slick.css',
 		// '~/assets/plugins/slick/slick-theme.css'
 	],
 
 	// Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
 	plugins: [
-		{ src: './plugins/vue-slick-carousel.js' },
+		{ src: '~/plugins/vue-slick-carousel.js' },
 		{ src: '~/plugins/helpers.js' },
 		{ src: '~/plugins/vuelidate' },
 		{ src: '~/plugins/jsonld' }
@@ -131,17 +134,23 @@ export default {
 		strategies: {
 			local: {
 				endpoints: {
-					login: { url: '/auth/login', method: 'post' },
-					logout: { url: '/auth/logout', method: 'post' },
+					login: {
+						url: '/base/login',
+						method: 'post',
+						propertyName: 'token'
+					},
+					logout: false,
 					user: {
-						url: '/current-user/profile',
+						url: '/base/current-user',
 						method: 'get',
 						propertyName: false
 					}
 				},
-				tokenType: 'Bearer'
+				autoLogout: true,
+				tokenType: ''
 			}
-		}
+		},
+		redirect: false
 	},
 
 	router: {

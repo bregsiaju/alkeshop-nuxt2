@@ -41,4 +41,5 @@
 		pauseOnHover: false
 	})
 	$('.hero-slider').slickAnimation()
+	// eslint-disable-next-line no-undef
 })(jQuery)

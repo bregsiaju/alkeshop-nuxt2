@@ -5,23 +5,18 @@
 				<div class="col-md-12">
 					<ul class="social-media">
 						<li>
-							<a href="https://www.facebook.com/themefisher">
+							<a href="https://www.facebook.com/alkeshop">
 								<i class="tf-ion-social-facebook"></i>
 							</a>
 						</li>
 						<li>
-							<a href="https://www.instagram.com/themefisher">
+							<a href="https://www.instagram.com/alkeshop">
 								<i class="tf-ion-social-instagram"></i>
 							</a>
 						</li>
 						<li>
-							<a href="https://www.twitter.com/themefisher">
+							<a href="https://www.twitter.com/alkeshop">
 								<i class="tf-ion-social-twitter"></i>
-							</a>
-						</li>
-						<li>
-							<a href="https://www.pinterest.com/themefisher/">
-								<i class="tf-ion-social-pinterest"></i>
 							</a>
 						</li>
 					</ul>
@@ -40,8 +35,8 @@
 						</li>
 					</ul>
 					<p class="copyright-text">
-						Copyright &copy;2021, Designed &amp; Developed by
-						<a href="https://themefisher.com/">Themefisher</a>
+						&copy;2023, Developed by
+						<a href="https://github.com/bregsiaju">Bregsi AJ</a>
 					</p>
 				</div>
 			</div>
