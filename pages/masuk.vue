@@ -8,7 +8,7 @@
 							<a class="logo" href="index.html">
 								<img src="/assets/img/AlkeShop.svg" alt="" />
 							</a>
-							<h2 class="text-center">Welcome Back</h2>
+							<h2 class="text-center">Welcome Back 💉🩺</h2>
 							<form
 								action=""
 								class="text-left clearfix"
@@ -20,6 +20,7 @@
 										type="text"
 										class="form-control"
 										placeholder="Username"
+										@keypress="error = null"
 									/>
 								</div>
 								<div class="form-group">
@@ -28,8 +29,10 @@
 										type="password"
 										class="form-control"
 										placeholder="Password"
+										@keypress="error = null"
 									/>
 								</div>
+								<div v-if="error" class="text-danger">{{ error }}</div>
 								<div class="text-center">
 									<button type="submit" class="btn btn-main text-center">
 										Login
@@ -52,26 +55,22 @@ export default {
 	layout: 'blanklayout',
 	data() {
 		return {
-			redirectPage: this.$route.query.dari || '/',
-			newPswEye: true,
 			formData: {
 				username: 'amatbanyak',
 				password: 'bintang123'
-			}
+			},
+			error: null
 		}
 	},
 	methods: {
 		async login() {
 			try {
-				const response = await this.$auth.loginWith('local', {
+				await this.$auth.loginWith('local', {
 					data: this.formData
 				})
-				const fk = await this.$axios.get('/base/current-user')
-				console.log(fk)
-				console.log(response)
 				this.$router.push('/')
 			} catch (err) {
-				console.log(err)
+				this.error = this.$getErrorMessage(err)
 			}
 		}
 	}

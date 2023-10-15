@@ -111,6 +111,11 @@ export default (context, inject) => {
 		)
 	}
 
+	const getErrorMessage = error => {
+		const errMsg = error?.response?.data?.message || error
+		return errMsg
+	}
+
 	inject('setCurrency', setCurrency)
 	inject('catch404', catch404)
 	inject('catch500', catch500)
@@ -122,6 +127,7 @@ export default (context, inject) => {
 	inject('SEOMeta', SEOMeta)
 	inject('StrongPassword', StrongPassword)
 	inject('jsonLD', jsonLD)
+	inject('getErrorMessage', getErrorMessage)
 }
 
 export function isEmpty(data) {
