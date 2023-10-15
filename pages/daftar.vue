@@ -6,9 +6,9 @@
 					<div class="col-md-6 col-md-offset-3">
 						<div class="block text-center">
 							<nuxt-link to="/" class="logo">
-								<img src="/assets/img/AlkeShop.svg" alt="" />
+								<img src="/assets/img/AlkeShop.png" width="198px" alt="" />
 							</nuxt-link>
-							<h2 class="text-center">Daftar Akun</h2>
+							<h2 class="text-center">Daftar Akun 🩺</h2>
 							<div v-if="error" class="text-danger">{{ error }}</div>
 							<form class="text-left clearfix" @submit.prevent="handleRegister">
 								<div class="form-group">
@@ -205,8 +205,8 @@ export default {
 	methods: {
 		async handleRegister() {
 			try {
-				const response = await this.$axios.post('/base/register', this.formData)
-				console.log(response)
+				await this.$axios.post('/base/register', this.formData)
+				// console.log(response)
 				await this.$auth.loginWith('local', {
 					data: {
 						username: this.formData.username,

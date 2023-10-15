@@ -6,7 +6,7 @@
 					<div class="col-md-6 col-md-offset-3">
 						<div class="block text-center">
 							<a class="logo" href="index.html">
-								<img src="/assets/img/AlkeShop.svg" alt="" />
+								<img src="/assets/img/AlkeShop.png" width="198px" alt="" />
 							</a>
 							<h2 class="text-center">Welcome Back 💉🩺</h2>
 							<form

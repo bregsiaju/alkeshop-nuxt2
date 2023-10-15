@@ -6,9 +6,10 @@
 				<div class="col-md-8 col-xs-12 col-sm-4">
 					<!-- Site Logo -->
 					<div class="logo">
+						<span class="suntik">🩺</span>
 						<nuxt-link to="/">
 							<!-- replace logo here -->
-							<img src="/assets/img/AlkeShop.svg" width="80%" />
+							<img src="/assets/img/AlkeShop.png" width="198px" class="logo" />
 						</nuxt-link>
 					</div>
 				</div>
@@ -110,5 +111,9 @@ export default {
 .dropdown-menu {
 	top: 28px;
 	right: 100px;
+}
+
+.suntik {
+	font-size: 30px;
 }
 </style>
