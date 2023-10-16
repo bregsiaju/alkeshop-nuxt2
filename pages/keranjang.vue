@@ -16,7 +16,12 @@
 			</div>
 		</section>
 		<div class="page-wrapper">
-			<div class="cart shopping">
+			<p class="text-blue text-center">{{ message }}</p>
+			<p class="text-danger text-center">{{ errorMsg }}</p>
+			<div v-if="products.length === 0" class="text-center">
+				Keranjang masih kosong
+			</div>
+			<div v-else class="cart shopping">
 				<div class="container">
 					<div class="row d-flex justify-content-center">
 						<div class="col-md-10">
@@ -36,6 +41,8 @@
 													v-for="product in products"
 													:key="product.id"
 													:item="product"
+													@update-msg="getMessage"
+													@error-msg="getErrorMsg"
 												/>
 											</tbody>
 										</table>
@@ -63,7 +70,14 @@ export default {
 	data() {
 		return {
 			cartQty: 1,
-			products: []
+			products: [],
+			message: '',
+			errorMsg: ''
+		}
+	},
+	watch: {
+		message() {
+			this.getProduct()
 		}
 	},
 	mounted() {
@@ -75,8 +89,20 @@ export default {
 				const detail = await this.$axios.get(`/base/carts`)
 				this.products = detail.data.data
 			} catch (err) {
-				this.error = this.$getErrorMessage(err)
+				this.errorMsg = this.$getErrorMessage(err)
 			}
+		},
+		getMessage(msg) {
+			this.message = msg
+			setTimeout(() => {
+				this.message = ''
+			}, 3000)
+		},
+		getErrorMsg(msg) {
+			this.errorMsg = msg
+			setTimeout(() => {
+				this.errorMsg = ''
+			}, 3000)
 		}
 	}
 }

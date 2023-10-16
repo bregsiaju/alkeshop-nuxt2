@@ -1,13 +1,13 @@
 <template>
 	<div class="container text-center">
 		<div v-if="statusCode === 404" class="mb-24">
-			<img v-lazy-load data-src="~assets/img/404.png" alt="" />
+			<img v-lazy-load data-src="~assets/images/404.png" alt="" />
 			<p class="h2 text-primary">
 				Maaf, halaman yang kamu cari untuk saat ini sedang tidak tersedia.
 			</p>
 		</div>
 		<div v-else class="mb-24">
-			<img v-lazy-load data-src="~assets/img/500.png" alt="" />
+			<img v-lazy-load data-src="~assets/images/500.png" alt="" />
 			<p class="h2 text-primary">
 				Maaf, saat ini sedang terjadi kesalahan basis data.
 			</p>

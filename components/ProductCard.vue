@@ -44,7 +44,7 @@ export default {
 				})
 				this.$emit('success-cart', res.data.message)
 			} catch (err) {
-				this.error = this.$getErrorMessage(err)
+				this.$emit('success-cart', this.$getErrorMessage(err))
 			}
 		}
 	}

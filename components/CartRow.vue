@@ -15,13 +15,13 @@
 			</nuxt-link>
 		</td>
 		<td class="set-qty">
-			<input v-model="getQty" type="number" min="1" />
+			<input v-model="qty" type="number" min="1" />
 		</td>
-		<td class="text-center px-5">
-			<nuxt-link :to="`/kej${item.Product.id}`" class="text-blue me-4"
-				>Update</nuxt-link
-			>
-			<a class="product-remove" href="#!">Remove</a>
+		<td class="text-center">
+			<div class="action">
+				<p class="text-blue" @click="updateCart">Update</p>
+				<p class="product-remove" @click="removeProduct">Hapus</p>
+			</div>
 		</td>
 	</tr>
 </template>
@@ -37,12 +37,30 @@ export default {
 	},
 	data() {
 		return {
-			qty: 1
+			qty: this.item.quantity
 		}
 	},
-	computed: {
-		getQty() {
-			return this.item.quantity
+	methods: {
+		async updateCart() {
+			try {
+				const res = await this.$axios.put('/base/carts', {
+					productId: this.item.Product.id,
+					quantity: parseInt(this.qty)
+				})
+				this.$emit('update-msg', res.data.message)
+			} catch (err) {
+				this.$emit('error-msg', this.$getErrorMessage(err))
+			}
+		},
+		async removeProduct() {
+			try {
+				const res = await this.$axios.delete(
+					`/base/carts/${this.item.Product.id}`
+				)
+				this.$emit('update-msg', res.data.message)
+			} catch (err) {
+				this.$emit('error-msg', this.$getErrorMessage(err))
+			}
 		}
 	}
 }
@@ -54,6 +72,22 @@ export default {
 	input {
 		height: 40px;
 		width: 80px;
+	}
+}
+
+.action {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	justify-content: center;
+
+	p {
+		margin: 0;
+
+		&:hover {
+			cursor: pointer;
+		}
 	}
 }
 </style>
