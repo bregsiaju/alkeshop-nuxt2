@@ -56,8 +56,8 @@ export default {
 	data() {
 		return {
 			formData: {
-				username: 'amatbanyak',
-				password: 'bintang123'
+				username: 'bregsiaju',
+				password: 'bam17bu'
 			},
 			error: null
 		}

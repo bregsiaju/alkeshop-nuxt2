@@ -116,6 +116,33 @@ export default (context, inject) => {
 		return errMsg
 	}
 
+	const formatDate = date => {
+		const datee = new Date(date)
+		const months = [
+			'Januari',
+			'Febuari',
+			'Maret',
+			'April',
+			'Mei',
+			'Juni',
+			'Juli',
+			'Agustus',
+			'September',
+			'Oktober',
+			'November',
+			'Desember'
+		]
+
+		const day = datee.getDate()
+		const month = months[datee.getMonth()]
+		const year = datee.getFullYear()
+		const hours = datee.getHours()
+		const minutes = datee.getMinutes()
+		const seconds = datee.getSeconds()
+
+		return `${day} ${month} ${year}, ${hours}:${minutes}:${seconds}`
+	}
+
 	inject('setCurrency', setCurrency)
 	inject('catch404', catch404)
 	inject('catch500', catch500)
@@ -128,6 +155,7 @@ export default (context, inject) => {
 	inject('StrongPassword', StrongPassword)
 	inject('jsonLD', jsonLD)
 	inject('getErrorMessage', getErrorMessage)
+	inject('formatDate', formatDate)
 }
 
 export function isEmpty(data) {

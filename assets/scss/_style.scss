@@ -540,13 +540,13 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
   text-transform: uppercase;
   padding: 10px 10px;
 }
-.commonAccordion .panel .panel-title a:before, .commonAccordion-2 .panel .panel-title a:before {
-  color: #555;
-  content: "\f209";
-  position: absolute;
-  right: 25px;
-  font-family: "themefisher-font";
-}
+// .commonAccordion .panel .panel-title a:before, .commonAccordion-2 .panel .panel-title a:before {
+//   color: #555;
+//   content: "\f209";
+//   position: absolute;
+//   right: 25px;
+//   font-family: "themefisher-font";
+// }
 .commonAccordion .panel .panel-title a.collapsed:before, .commonAccordion-2 .panel .panel-title a.collapsed:before {
   content: "\f217";
 }
@@ -2775,4 +2775,105 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 
 .ps-5 {
   padding-left: 3rem !important;
+}
+
+.row-cols-auto > * {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+.row-cols-1 > * {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+.row-cols-2 > * {
+  flex: 0 0 auto;
+  width: 50%;
+}
+
+.row-cols-3 > * {
+  flex: 0 0 auto;
+  width: 33.33333333%;
+}
+
+.row-cols-4 > * {
+  flex: 0 0 auto;
+  width: 25%;
+}
+
+.row-cols-5 > * {
+  flex: 0 0 auto;
+  width: 20%;
+}
+
+.row-cols-6 > * {
+  flex: 0 0 auto;
+  width: 16.66666667%;
+}
+
+
+.col-auto {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+.col-1 {
+  flex: 0 0 auto;
+  width: 8.33333333%;
+}
+
+.col-2 {
+  flex: 0 0 auto;
+  width: 16.66666667%;
+}
+
+.col-3 {
+  flex: 0 0 auto;
+  width: 25%;
+}
+
+.col-4 {
+  flex: 0 0 auto;
+  width: 33.33333333%;
+}
+
+.col-5 {
+  flex: 0 0 auto;
+  width: 41.66666667%;
+}
+
+.col-6 {
+  flex: 0 0 auto;
+  width: 50%;
+}
+
+.col-7 {
+  flex: 0 0 auto;
+  width: 58.33333333%;
+}
+
+.col-8 {
+  flex: 0 0 auto;
+  width: 66.66666667%;
+}
+
+.col-9 {
+  flex: 0 0 auto;
+  width: 75%;
+}
+
+.col-10 {
+  flex: 0 0 auto;
+  width: 83.33333333%;
+}
+
+.col-11 {
+  flex: 0 0 auto;
+  width: 91.66666667%;
+}
+
+.col-12 {
+  flex: 0 0 auto;
+  width: 100%;
 }

@@ -15,13 +15,25 @@
 				</div>
 			</div>
 		</section>
-		<div class="page-wrapper">
+		<section v-if="products.length === 0" class="empty-cart page-wrapper">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-md-offset-3">
+						<div class="block text-center">
+							<i class="tf-ion-ios-cart-outline"></i>
+							<h2 class="text-center">Keranjangnya masih kosong</h2>
+							<nuxt-link to="/" class="btn btn-main mt-20"
+								>Kembali ke halaman produk</nuxt-link
+							>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<div v-else class="page-wrapper">
 			<p class="text-blue text-center">{{ message }}</p>
 			<p class="text-danger text-center">{{ errorMsg }}</p>
-			<div v-if="products.length === 0" class="text-center">
-				Keranjang masih kosong
-			</div>
-			<div v-else class="cart shopping">
+			<div class="cart shopping">
 				<div class="container">
 					<div class="row d-flex justify-content-center">
 						<div class="col-md-10">

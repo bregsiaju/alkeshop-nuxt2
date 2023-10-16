@@ -7,8 +7,8 @@
 						<div class="content">
 							<h1 class="page-name">Dashboard</h1>
 							<ol class="breadcrumb">
-								<li><a href="index.html">Home</a></li>
-								<li class="active">my account</li>
+								<li><nuxt-link to="/">Beranda</nuxt-link></li>
+								<li class="active">Akun dan Riwayat Pesan</li>
 							</ol>
 						</div>
 					</div>
@@ -74,4 +74,10 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+a {
+	&:hover {
+		cursor: pointer;
+	}
+}
+</style>

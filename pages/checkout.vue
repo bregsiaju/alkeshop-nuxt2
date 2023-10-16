@@ -56,7 +56,7 @@
 											/>
 										</div>
 										<div class="form-group">
-											<label for="user_city">Kota/Kab.</label>
+											<label for="user_city">Provinsi</label>
 											<input
 												id="user_city"
 												v-model.trim="$v.formData.city.$model"
@@ -258,6 +258,13 @@ export default {
 			})
 
 			return subtotals.reduce((total, subtotal) => total + subtotal, 0)
+		},
+		getTotalItem() {
+			const num = this.products.map(item => {
+				return item.quantity
+			})
+
+			return num.reduce((total, subtotal) => total + subtotal, 0)
 		}
 	},
 	watch: {
@@ -281,13 +288,12 @@ export default {
 			try {
 				const res = await this.$axios.post(`/base/checkout`, {
 					...this.formData,
+					totalItems: this.getTotalItem,
 					totalPrice: this.getSubtotal,
 					products: this.products
 				})
-				console.log(res.data.data)
-				if (this.formData.paymentMethod === 1) {
-					this.$axios.get(`/base/send-invoice/${res.data.data.id}`)
-				}
+				// console.log(res.data.data)
+				this.$axios.get(`/base/send-invoice/${res.data.data.id}`)
 				this.$router.push('/confirmation')
 			} catch (err) {
 				this.error = this.$getErrorMessage(err)

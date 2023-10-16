@@ -24,7 +24,7 @@
 						<!-- / Cart -->
 
 						<!-- Search -->
-						<li class="dropdown search dropdown-slide">
+						<!-- <li class="dropdown search dropdown-slide">
 							<a
 								class="dropdown-toggle"
 								data-toggle="dropdown"
@@ -43,7 +43,7 @@
 									</form>
 								</li>
 							</ul>
-						</li>
+						</li> -->
 						<!-- / Search -->
 
 						<!-- Profile -->

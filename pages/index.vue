@@ -28,95 +28,29 @@
 							>
 								<div class="panel panel-default">
 									<div id="headingOne" class="panel-heading" role="tab">
-										<h4 class="panel-title">
-											<a
-												role="button"
-												data-toggle="collapse"
-												data-parent="#accordion"
-												href="#collapseOne"
-												aria-expanded="true"
-												aria-controls="collapseOne"
-											>
-												Shoes
-											</a>
+										<h4
+											class="panel-title"
+											:class="{ active: activeCat === 0 }"
+											@click="activeCat = 0"
+										>
+											<a role="button" @click="getProduct">Semua Produk</a>
 										</h4>
-									</div>
-									<div
-										id="collapseOne"
-										class="panel-collapse collapse in"
-										role="tabpanel"
-										aria-labelledby="headingOne"
-									>
-										<div class="panel-body">
-											<ul>
-												<li><a href="#!">Brand & Twist</a></li>
-												<li><a href="#!">Shoe Color</a></li>
-												<li><a href="#!">Shoe Color</a></li>
-											</ul>
-										</div>
 									</div>
 								</div>
-								<div class="panel panel-default">
-									<div id="headingTwo" class="panel-heading" role="tab">
-										<h4 class="panel-title">
-											<a
-												class="collapsed"
-												role="button"
-												data-toggle="collapse"
-												data-parent="#accordion"
-												href="#collapseTwo"
-												aria-expanded="false"
-												aria-controls="collapseTwo"
-											>
-												Duty Wear
+								<div
+									v-for="item in categories"
+									:key="item.id"
+									class="panel panel-default"
+								>
+									<div id="headingOne" class="panel-heading" role="tab">
+										<h4
+											class="panel-title"
+											:class="{ active: activeCat === item.id }"
+										>
+											<a role="button" @click="filterByCategory(item.id)">
+												{{ item.categoryName }}
 											</a>
 										</h4>
-									</div>
-									<div
-										id="collapseTwo"
-										class="panel-collapse collapse"
-										role="tabpanel"
-										aria-labelledby="headingTwo"
-									>
-										<div class="panel-body">
-											<ul>
-												<li><a href="#!">Brand & Twist</a></li>
-												<li><a href="#!">Shoe Color</a></li>
-												<li><a href="#!">Shoe Color</a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-								<div class="panel panel-default">
-									<div id="headingThree" class="panel-heading" role="tab">
-										<h4 class="panel-title">
-											<a
-												class="collapsed"
-												role="button"
-												data-toggle="collapse"
-												data-parent="#accordion"
-												href="#collapseThree"
-												aria-expanded="false"
-												aria-controls="collapseThree"
-											>
-												WorkOut Shoes
-											</a>
-										</h4>
-									</div>
-									<div
-										id="collapseThree"
-										class="panel-collapse collapse"
-										role="tabpanel"
-										aria-labelledby="headingThree"
-									>
-										<div class="panel-body">
-											<ul>
-												<li><a href="#!">Brand & Twist</a></li>
-												<li><a href="#!">Shoe Color</a></li>
-												<li><a href="#!">Gladian Shoes</a></li>
-												<li><a href="#!">Swis Shoes</a></li>
-											</ul>
-										</div>
 									</div>
 								</div>
 							</div>
@@ -126,7 +60,7 @@
 
 					<!-- produk -->
 					<div class="col-md-9">
-						<div class="row">
+						<div class="row row-cols-3">
 							<div
 								v-for="product in products"
 								:key="product.id"
@@ -152,11 +86,14 @@ export default {
 		return {
 			error: null,
 			products: [],
-			cartMsg: ''
+			categories: [],
+			cartMsg: '',
+			activeCat: 0
 		}
 	},
 	mounted() {
 		this.getProduct()
+		this.getCategory()
 	},
 	methods: {
 		async getProduct() {
@@ -164,6 +101,23 @@ export default {
 				const res = await this.$axios.get('/base/products')
 				this.products = res.data.data
 				// console.log(res.data.data)
+			} catch (err) {
+				this.error = this.$getErrorMessage(err)
+			}
+		},
+		async getCategory() {
+			try {
+				const res = await this.$axios.get('/base/categories')
+				this.categories = res.data.data
+			} catch (err) {
+				this.error = this.$getErrorMessage(err)
+			}
+		},
+		async filterByCategory(id) {
+			try {
+				const res = await this.$axios.get(`/base/filter-category/${id}`)
+				this.products = res.data.data
+				this.activeCat = id
 			} catch (err) {
 				this.error = this.$getErrorMessage(err)
 			}
@@ -181,5 +135,20 @@ export default {
 <style lang="scss" scoped>
 .section {
 	padding: 50px 0 80px 0;
+}
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.panel-title {
+	&.active {
+		background-color: #00a6ed;
+		a {
+			color: white;
+			font-weight: bold;
+		}
+	}
 }
 </style>
