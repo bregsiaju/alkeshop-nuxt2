@@ -1,4 +1,9 @@
 export default (context, inject) => {
+	/**
+	 * setCurrency : memformat angka menjadi format uang rupiah
+	 * number (integer) mis: 38000
+	 * return 38.000
+	 **/
 	const setCurrency = number => {
 		return Number(number).toLocaleString('id-ID')
 	}

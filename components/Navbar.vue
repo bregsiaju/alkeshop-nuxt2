@@ -16,7 +16,7 @@
 				<div class="col-md-8 col-xs-12 col-sm-4">
 					<!-- Cart -->
 					<ul v-if="isLoggedIn" class="top-menu text-right list-inline">
-						<li class="cart-nav dropdown-slide">
+						<li class="cart-nav">
 							<nuxt-link to="/keranjang" class="dropdown-toggle"
 								><i class="tf-ion-android-cart"></i>Keranjang</nuxt-link
 							>

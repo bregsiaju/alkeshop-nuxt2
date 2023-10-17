@@ -9,10 +9,11 @@
 								<img src="/assets/img/AlkeShop.png" width="198px" alt="" />
 							</nuxt-link>
 							<h2 class="text-center">Daftar Akun 🩺</h2>
-							<div v-if="error" class="text-danger">{{ error }}</div>
 							<form class="text-left clearfix" @submit.prevent="handleRegister">
 								<div class="form-group">
+									<label for="full_name">Nama Lengkap</label>
 									<input
+										id="full_name"
 										v-model.trim="$v.formData.fullName.$model"
 										type="text"
 										class="form-control"
@@ -27,7 +28,9 @@
 									</div>
 								</div>
 								<div class="form-group">
+									<label for="username">Usename</label>
 									<input
+										id="username"
 										v-model.trim="$v.formData.username.$model"
 										type="text"
 										class="form-control"
@@ -42,7 +45,9 @@
 									</div>
 								</div>
 								<div class="form-group">
+									<label for="email">Email</label>
 									<input
+										id="email"
 										v-model.trim="$v.formData.email.$model"
 										type="email"
 										class="form-control"
@@ -57,11 +62,13 @@
 									</div>
 								</div>
 								<div class="form-group">
+									<label for="handphone">No. HP</label>
 									<input
+										id="handphone"
 										v-model.trim="$v.formData.phone.$model"
 										type="text"
 										class="form-control"
-										placeholder="Nomor Telepon (6281 xxxx xxxx)"
+										placeholder="Nomor Handphone (6281 xxxx xxxx)"
 										@keypress="error = null"
 									/>
 									<div v-if="$v.formData.phone.$error" class="form-error-msg">
@@ -80,7 +87,9 @@
 									</div>
 								</div>
 								<div class="form-group">
+									<label for="password">Password</label>
 									<input
+										id="password"
 										v-model.trim="$v.formData.password.$model"
 										type="password"
 										class="form-control"
@@ -99,7 +108,9 @@
 									</div>
 								</div>
 								<div class="form-group">
+									<label for="address">Alamat Lengkap</label>
 									<input
+										id="address"
 										v-model.trim="$v.formData.address.$model"
 										type="text"
 										class="form-control"
@@ -111,6 +122,7 @@
 									</div>
 								</div>
 								<div class="text-center">
+									<div v-if="error" class="text-danger mb-4">{{ error }}</div>
 									<button
 										type="submit"
 										class="btn btn-main text-center"
@@ -156,14 +168,14 @@ export default {
 				address: null
 			},
 			formData: {
-				fullName: 'Bregsi',
-				username: 'bregsiaju',
-				email: 'bregsiaju@gmail.com',
-				phone: '086892783927',
-				password: 'bam17bu',
+				fullName: '',
+				username: '',
+				email: '',
+				phone: '',
+				password: '',
 				birthDate: null,
 				gender: null,
-				address: 'Jl. Surabaya No. 4'
+				address: ''
 			}
 		}
 	},
@@ -223,6 +235,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.signin-page {
+	padding-top: 250px;
+}
+
 .form-error-msg {
 	color: #a94442;
 	font-size: 12px;
