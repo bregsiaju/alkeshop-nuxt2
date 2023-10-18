@@ -15,7 +15,9 @@
 								@submit.prevent="login"
 							>
 								<div class="form-group">
+									<label for="username">Username</label>
 									<input
+										id="username"
 										v-model="formData.username"
 										type="text"
 										class="form-control"
@@ -24,7 +26,9 @@
 									/>
 								</div>
 								<div class="form-group">
+									<label for="password">Password</label>
 									<input
+										id="password"
 										v-model="formData.password"
 										type="password"
 										class="form-control"
@@ -56,8 +60,8 @@ export default {
 	data() {
 		return {
 			formData: {
-				username: 'bregsiaju',
-				password: 'bam17bu'
+				username: '',
+				password: ''
 			},
 			error: null
 		}
