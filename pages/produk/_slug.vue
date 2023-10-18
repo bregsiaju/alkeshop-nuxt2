@@ -83,6 +83,9 @@
 						<p class="mt-3 text-black">
 							{{ successMsg ? successMsg : '' }}
 						</p>
+						<p class="mt-3 text-danger">
+							{{ error ? error : '' }}
+						</p>
 					</div>
 				</div>
 			</div>
@@ -134,7 +137,8 @@ export default {
 			product: {},
 			loading: true,
 			cartQty: 1,
-			successMsg: null
+			successMsg: null,
+			error: null
 		}
 	},
 	mounted() {
@@ -168,6 +172,9 @@ export default {
 			} finally {
 				setTimeout(() => {
 					this.successMsg = null
+				}, 3000)
+				setTimeout(() => {
+					this.error = null
 				}, 3000)
 			}
 		}
@@ -216,6 +223,7 @@ $blue: #00a6ed;
 
 <style lang="scss">
 $blue: #00a6ed;
+
 .text-black {
 	color: black;
 }

@@ -13,6 +13,7 @@
 			</div>
 		</section>
 		<div class="text-center text-blue fw-medium">{{ cartMsg }}</div>
+		<div class="text-center text-danger fw-medium">{{ errorMsg }}</div>
 		<section class="products section">
 			<div class="container">
 				<div class="row">
@@ -66,7 +67,11 @@
 								:key="product.id"
 								class="col-md-4"
 							>
-								<ProductCard :data="product" @success-cart="getMessageCart" />
+								<ProductCard
+									:data="product"
+									@success-cart="getMessageCart"
+									@error-cart="getMessageError"
+								/>
 							</div>
 						</div>
 					</div>
@@ -88,7 +93,8 @@ export default {
 			products: [],
 			categories: [],
 			cartMsg: '',
-			activeCat: 0
+			activeCat: 0,
+			errorMsg: ''
 		}
 	},
 	mounted() {
@@ -126,6 +132,12 @@ export default {
 			this.cartMsg = msg
 			setTimeout(() => {
 				this.cartMsg = ''
+			}, 3000)
+		},
+		getMessageError(msg) {
+			this.errorMsg = msg
+			setTimeout(() => {
+				this.errorMsg = ''
 			}, 3000)
 		}
 	}
